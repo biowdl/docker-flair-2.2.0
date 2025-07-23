@@ -1,0 +1,12 @@
+default:
+  before_script:
+    - docker info
+
+build_image:
+  script:
+    - docker build -t gitregistry.lumc.nl:4443/klinische-genetica/docker-flair-2.2.0 .
+    - docker run -it gitregistry.lumc.nl:4443/klinische-genetica/docker-flair-2.2.0 flair --help
+
+publish_image:
+  script:
+    - docker push gitregistry.lumc.nl:4443/klinische-genetica/docker-flair-2.2.0
